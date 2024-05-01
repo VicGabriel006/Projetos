@@ -1,0 +1,36 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Saída de Combustível</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+</head>
+<body>
+    <div class="container">
+    <form action="{% url 'combustivel'%}" method="POST">
+        {% csrf_token % %}
+      <h2>Controle de Saída de Combustível</h2>
+      <div class="form-combust">
+        <label for="combustivel">Tipo de Combustível:</label>
+        <select class="form-control" id="combustivel" name="gasolina">
+          <option value="etanol">Etanol</option>
+          <option value="gasolina">Gasolina</option>
+        </select>
+      </div>
+      <div class="form-calc">
+        <label for="litros">Litros:</label>
+        <input type="number" class="form-control" id="litros" name="litros" min="1" required>
+        
+        <label for="valor_litro">Valor por Litro:</label>
+        <input type="number" class="form-control" id="valor_litro" name="preco" step="0.01" min="0.01" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="botao">Registrar Saída</button>
+    </form>
+  </div>
+</body>
+</html>
